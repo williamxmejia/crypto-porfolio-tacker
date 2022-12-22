@@ -5,7 +5,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg navbar-light">
             <Link to="/" className="navbar-brand text-white">ChainFolio</Link>
             <div className="collapse navbar-collapse">
-                <ul className="navbar-nav">
+                {/* <ul className="navbar-nav">
                     <li className="nav-item">
                         <Link to="/" className="nav-link text-white">Home</Link>
                     </li>
@@ -15,7 +15,7 @@ const Navbar = () => {
                     <li className="nav-item">
                         <Link to="/about" className="nav-link text-white">About</Link>
                     </li>
-                </ul>
+                </ul> */}
             </div>
         </nav>
     )

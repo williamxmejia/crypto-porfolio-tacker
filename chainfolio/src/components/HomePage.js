@@ -1,5 +1,4 @@
 // import {Link} from "react-router-dom";
-import image from "./9a5aca31a34e84223dfa6323464fef54cd957f3a.png";
 import Navbar from "./Navbar";
 // import * as dotenv from 'dotenv'
 import axios from "axios";
@@ -8,16 +7,16 @@ import { useEffect, useState } from "react";
 // dotenv.config()
 
 const HomePage = () => {
-  const[data, setData] = useState({
-    name:"",
+  const [data, setData] = useState({
+    name: "",
     symbol: "",
     cmc_rank: "",
     circulating_supply: "",
     total_supply: "",
     max_supply: "",
-    self_reported_market_cap:"" 
-  })
-
+    self_reported_market_cap: "",
+    priceUSD:"",
+  });
 
   useEffect(() => {
     async function fetchData() {
@@ -26,11 +25,11 @@ const HomePage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify()
+        body: JSON.stringify(),
       })
         .then((res) => {
-            console.log(res);
-            setData(res.data);
+          console.log(res);
+          setData(res.data);
         })
         .catch((error) => {
           window.alert(error);
@@ -43,19 +42,23 @@ const HomePage = () => {
   return (
     <div className="container">
       <Navbar />
-      <div className="mt-5">
+      <div className="mt-5 d-flex justify-content-center">
         <div className="d-flex">
           <div className="mx-5 mt-5 col-7 text-white">
             <h2 className="text-center">Welcome to ChainFolio</h2>
-            <h1>{data.symbol}</h1>
-            <h2>{data.name}</h2>
-            <ul>
-                <li>{data.cmc_rank}</li>
-                <li>{data.self_reported_market_cap}</li>
-                <li>{data.circulating_supply} {data.symbol}</li>
-                <li>{data.total_supply} {data.symbol}</li>
-                <li>{data.max_supply} {data.symbol}</li>
-            </ul>
+            <div>
+              <h2 className="text-center">{data.name}</h2>
+              <h1 className="text-center">{data.symbol}</h1>
+              <ul className="list-group">
+                <li className="list-group-item">Rank: {data.cmc_rank}</li>
+                <li className="list-group-item">Price: ${Number(data.priceUSD).toFixed(2)}</li>
+                <li className="list-group-item">Market Cap: ${(Number(data.priceUSD) * Number(data.total_supply)).toFixed(2)}</li>
+                <li className="list-group-item">Circulating Supply: {data.circulating_supply} {data.symbol}</li>
+                <li className="list-group-item">Total Supply: {data.total_supply} {data.symbol}</li>
+                <li className="list-group-item">Max Supply: {data.max_supply} {data.symbol}</li>
+              </ul>
+            </div>
+
             <p
               className="mt-5 text-center"
               style={{ fontWeight: "400", fontSize: "25px" }}
@@ -69,7 +72,6 @@ const HomePage = () => {
               The most up to date and accurate crypto prices
             </p>
           </div>
-          <img src={image} style={{ height: "600px" }} className="" alt="" />
         </div>
       </div>
     </div>
