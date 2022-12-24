@@ -43,12 +43,12 @@ const HomePage = () => {
     <div className="container">
       <Navbar />
       <div className="mt-5 d-flex justify-content-center">
-        <div className="d-flex">
-          <div className="mx-5 mt-5 col-7 text-white">
+        <div>
+          <div className="text-white">
             <h2 className="text-center">Welcome to ChainFolio</h2>
-            <div>
-              <h2 className="text-center">{data.name}</h2>
-              <h1 className="text-center">{data.symbol}</h1>
+            <div className="d-flex row">
+              <h1 className="text-center">{data.name}</h1>
+              <h3 className="text-center">{data.symbol}</h3>
               <ul className="list-group">
                 <li className="list-group-item">Rank: {data.cmc_rank}</li>
                 <li className="list-group-item">Price: ${Number(data.priceUSD).toFixed(2)}</li>
@@ -58,19 +58,6 @@ const HomePage = () => {
                 <li className="list-group-item">Max Supply: {data.max_supply} {data.symbol}</li>
               </ul>
             </div>
-
-            <p
-              className="mt-5 text-center"
-              style={{ fontWeight: "400", fontSize: "25px" }}
-            >
-              Keep track of your crypto all in one place.
-            </p>
-            <p
-              className="text-center"
-              style={{ fontWeight: "400", fontSize: "25px" }}
-            >
-              The most up to date and accurate crypto prices
-            </p>
           </div>
         </div>
       </div>
