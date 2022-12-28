@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+
 // dotenv.config()
 
 const HomePage = () => {
@@ -40,23 +41,43 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="">
       <Navbar />
-      <div className="mt-5 d-flex justify-content-center">
+      <div className="container-fluid mt-5">
         <div>
           <div className="text-white">
-            <h2 className="text-center">Welcome to ChainFolio</h2>
+            <h1 className="text-center display-1">{data.symbol}</h1>
+            <h2 className="text-center mb-5">#{data.cmc_rank}</h2>
             <div className="d-flex row">
-              <h1 className="text-center">{data.name}</h1>
-              <h3 className="text-center">{data.symbol}</h3>
-              <ul className="list-group">
-                <li className="list-group-item">Rank: {data.cmc_rank}</li>
-                <li className="list-group-item">Price: ${Number(data.priceUSD).toFixed(2)}</li>
-                <li className="list-group-item">Market Cap: ${(Number(data.priceUSD) * Number(data.total_supply)).toFixed(2)}</li>
-                <li className="list-group-item">Circulating Supply: {data.circulating_supply} {data.symbol}</li>
-                <li className="list-group-item">Total Supply: {data.total_supply} {data.symbol}</li>
-                <li className="list-group-item">Max Supply: {data.max_supply} {data.symbol}</li>
-              </ul>
+              <div className="">
+                <div className="display-3 mb-5">${Number(data.priceUSD).toLocaleString('en-US', {maximumFractionDigits:2})}</div>
+                <div className=" display-5 mb-5">
+                  <div className="">
+                    <u>Market Cap</u>
+                  </div>
+                  <div>
+                    ${(Number(data.priceUSD) * Number(data.total_supply)).toLocaleString('en-US', {maximumFractionDigits:2})}
+                  </div>
+
+                </div>
+                <div className="display-5 mb-5">
+                  <div>
+                    <u>Circulating Supply</u>
+                  </div>
+                  <div>
+                    {(data.circulating_supply).toLocaleString()} {data.symbol}
+                  </div>
+                </div>
+
+                <div className=" display-5">
+                  <div>
+                    <u>Max Supply</u>
+                  </div>
+                  <div>
+                    {(data.max_supply).toLocaleString()} {data.symbol}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

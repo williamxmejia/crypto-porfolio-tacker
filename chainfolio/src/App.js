@@ -6,7 +6,7 @@ import About from "./components/About";
 
 function App() {
   return (
-    <div className={"container mt-5"}>
+    <div className={"mt-5"}>
         <Routes>
             <Route path="/" element={<HomePage />}/>
             <Route path="/about" element={<About />}/>
