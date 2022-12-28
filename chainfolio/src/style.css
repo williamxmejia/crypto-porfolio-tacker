@@ -4,3 +4,7 @@ body {
     background-color: #121518;
 	font-family: 'Roboto', sans-serif;
 }
+
+.line {
+    line-height: 2;
+}

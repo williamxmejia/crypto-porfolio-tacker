@@ -46,7 +46,9 @@ const HomePage = () => {
       <div className="container-fluid mt-5">
         <div>
           <div className="text-white">
-            <h1 className="text-center display-1">{data.symbol}</h1>
+            <div>
+              <h1 className="text-center display-1 line">{data.symbol}</h1>
+            </div>
             <h2 className="text-center mb-5">#{data.cmc_rank}</h2>
             <div className="d-flex row">
               <div className="">
